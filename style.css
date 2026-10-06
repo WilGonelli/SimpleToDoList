@@ -53,7 +53,7 @@ form {
   gap: 4px;
 }
 
-label {
+.label {
   font-size: 24px;
   padding: 0 14px;
 }
@@ -95,7 +95,7 @@ input:focus {
 }
 
 .status-list {
-  display: flex;
+  display: none;
   flex-direction: column;
   width: 100%;
   background-color: aliceblue;
@@ -108,11 +108,7 @@ input:focus {
     border: 1px solid black;
     cursor: pointer;
     transition: background-color 0.5s ease;
-
-    & a {
-      all: unset;
-      color: black;
-    }
+    color: black;
   }
 
   & li:hover {
@@ -120,8 +116,8 @@ input:focus {
   }
 }
 
-.not-show {
-  display: none;
+.show {
+  display: flex;
 }
 
 .submit {

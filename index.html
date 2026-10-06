@@ -14,33 +14,33 @@
         <h1>Put your task</h1>
         <form action="">
             <div class="input-area">
-                <label for="task-name">Task</label>
-                <input type="text" name="task-name" id="task-name" placeholder="Task name">
+                <label class="label" for="task-name" >Task</label>
+                <input type="text" name="task-name" id="input-name" placeholder="Task name" >
             </div>
             <div class="input-area">
-                <label for="task-description">Description</label>
-                <input type="text" description="task-description" id="task-description" placeholder="Task description">
+                <label class="label" for="task-description" >Description</label>
+                <input type="text" description="task-description" id="input-description" placeholder="Task description">
             </div>
             <div class="row-div">
                 <div class="input-area">
-                    <label for="task-date">Due date</label>
-                    <input type="date" date="task-date" id="task-date"
+                    <label class="label" for="task-date">Due date</label>
+                    <input type="date" date="task-date" id="input-date"
                         placeholder="Task date">
                 </div>
                 <div class="input-area">
-                    <label for="task-status">Status</label>
+                    <p class="label" for="task-status">Status</p>
                     <div class="dropbox-container">
-                        <button class="dropbox-btn">Select</button>
-                        <ul class="not-show">
-                            <li><a href="#">Pending</a></li>
-                            <li><a href="#">In Progress</a></li>
-                            <li><a href="#">Completed</a></li>
+                        <button class="dropbox-btn" id="dropbox-btn">Select</button>
+                        <ul class="status-list" id="dropbox-list">
+                            <li>Pending</li>
+                            <li>In Progress</li>
+                            <li>Completed</li>
                         </ul>
                     </div>
                     
                 </div>
             </div>
-            <button type="submit" class="submit">Add Task</button>
+            <button type="submit" class="submit" id="submit">Add Task</button>
         </form>
     </div>
     <div class="right-container">list</div>
