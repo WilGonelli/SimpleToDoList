@@ -70,56 +70,6 @@ input:focus {
   outline-offset: -1px;
 }
 
-.row-div {
-  display: flex;
-  flex-direction: row;
-  gap: 12px;
-
-  & .input-area {
-    width: 50%;
-  }
-}
-
-.dropbox-container {
-  position: relative;
-}
-
-.dropbox-btn {
-  display: flex;
-  background-color: aliceblue;
-  width: 100%;
-  padding: 12px;
-  border-radius: 8px;
-  align-items: flex-start;
-  background-color: rgb(216, 216, 215);
-}
-
-.status-list {
-  display: none;
-  flex-direction: column;
-  width: 100%;
-  background-color: aliceblue;
-  text-decoration: none;
-  position: absolute;
-
-  & li {
-    all: unset;
-    padding: 6px 12px;
-    border: 1px solid black;
-    cursor: pointer;
-    transition: background-color 0.5s ease;
-    color: black;
-  }
-
-  & li:hover {
-    background-color: rgb(200, 200, 200);
-  }
-}
-
-.show {
-  display: flex;
-}
-
 .submit {
   padding: 12px;
   border-radius: 12px;
@@ -151,9 +101,5 @@ input:focus {
   gap: 4px;
   background-color: rgb(104, 108, 112);
   border-radius: 12px;
-}
-
-.name-date {
-  display: flex;
-  justify-content: space-between;
+  border: 1px solid white;
 }
