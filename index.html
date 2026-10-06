@@ -10,25 +10,53 @@
 </head>
 
 <body>
-    <div class="left-container">
-        <h1>Put your task</h1>
-        <form action="">
-            <div class="input-area">
-                <label class="label" for="input-name">Task</label>
-                <input type="text" id="input-name" placeholder="Task name">
-            </div>
-            <div class="input-area">
-                <label class="label" for="input-description">Description</label>
-                <input type="text" id="input-description" placeholder="Task description">
-            </div>
-            <button type="submit" class="submit" id="submit">Add Task</button>
-        </form>
-    </div>
-    <div class="right-container">
-        <h1>Tasks</h1>
-        <ul class="list-container" id="list-task">
-        </ul>
-    </div>
+    <!-- <div class="left-container"> -->
+    <!-- Replaced generic div with landmark <main> to group the core application sections -->
+    <main class="main-wrapper">
+        <!-- Replaced generic div with <section> and associated heading id for accessibility -->
+        <section class="left-container" aria-labelledby="form-title">
+            <!-- <h1>Put your task</h1> -->
+            <!-- Changed to <h2> to maintain a single primary <h1> or clear landmark hierarchy -->
+            <h1 id="form-title">Put your task</h1>
+
+            <!-- <form action=""> -->
+            <!-- Added id, novalidate (to handle custom accessible feedback), and aria-labelledby -->
+            <form id="task-form" novalidate aria-labelledby="form-title">
+                <div class="input-area">
+                    <label class="label" for="input-name">Task</label>
+                    <!-- <input type="text" id="input-name" placeholder="Task name"> -->
+                    <!-- Added name attribute, required, aria-required, and linked to error feedback -->
+                    <input type="text" id="input-name" name="taskName" placeholder="Task name" required aria-required="true" aria-describedby="form-feedback">
+                </div>
+                <div class="input-area">
+                    <label class="label" for="input-description">Description</label>
+                    <!-- <input type="text" id="input-description" placeholder="Task description"> -->
+                    <!-- Added name attribute, required, aria-required, and linked to error feedback -->
+                    <input type="text" id="input-description" name="taskDescription" placeholder="Task description" required aria-required="true" aria-describedby="form-feedback">
+                </div>
+
+                <!-- Added live region for screen-reader-accessible error/success announcements -->
+                <div id="form-feedback" class="feedback-message" role="alert" aria-live="polite"></div>
+
+                <!-- <button type="submit" class="submit" id="submit">Add Task</button> -->
+                <!-- Renamed id="submit" to avoid shadowing the native form.submit() JavaScript property -->
+                <button type="submit" class="submit" id="submit-btn">Add Task</button>
+            </form>
+        </section>
+
+        <!-- <div class="right-container"> -->
+        <!-- Replaced generic div with <section> with accessible name via aria-labelledby -->
+        <section class="right-container" aria-labelledby="tasks-title">
+            <!-- <h1>Tasks</h1> -->
+            <!-- Changed to <h2> so screen reader heading navigation is well-structured -->
+            <h2 id="tasks-title">Tasks</h2>
+
+            <!-- <ul class="list-container" id="list-task"> -->
+            <!-- Added aria-live to automatically announce task additions/removals -->
+            <ul class="list-container" id="list-task" aria-live="polite" aria-relevant="additions removals">
+            </ul>
+        </section>
+    </main>
 </body>
 
 </html>

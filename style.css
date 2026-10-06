@@ -7,8 +7,9 @@
 
 body {
   background-color: rgb(52, 51, 51);
-  display: flex;
-  justify-content: space-between;
+  /* display: flex; */
+  /* justify-content: space-between; */
+  /* Moved flex layout to semantic <main class="main-wrapper"> container */
   color: aliceblue;
   font-family:
     system-ui,
@@ -22,7 +23,17 @@ body {
     "Open Sans",
     "Helvetica Neue",
     sans-serif;
-  height: 100vh;
+  /* height: 100vh; */
+  /* min-height prevents layout clipping and scrolling issues on smaller viewports (WCAG 1.4.4 / 1.4.10) */
+  min-height: 100vh;
+}
+
+/* Added layout wrapper for the semantic <main> landmark */
+.main-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 100vh;
 }
 
 .left-container,
@@ -63,11 +74,23 @@ input {
   padding: 6px 12px;
   border-radius: 12px;
   background-color: rgb(197, 196, 195);
+  border: 1px solid #777;
+  color: #111;
 }
 
-input:focus {
+/* input:focus {
   outline: 2px solid blue;
   outline-offset: -1px;
+} */
+/* Improved focus styling using :focus-visible and high-contrast outline for keyboard navigation (WCAG 2.4.7) */
+input:focus-visible,
+.submit:focus-visible {
+  outline: 3px solid #38bdf8;
+  outline-offset: 2px;
+}
+
+input[aria-invalid="true"] {
+  border: 2px solid #ef4444;
 }
 
 .submit {
@@ -76,11 +99,44 @@ input:focus {
   background-color: rgb(55, 217, 242);
   margin-top: 24px;
   font-size: 18px;
-  transition: background-color 0.5s ease;
+  /* Added high-contrast text color and cursor: inherited aliceblue failed WCAG AA contrast (1.28:1) against cyan */
+  color: #0f172a;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  /* transition: background-color 0.5s ease; */
+  transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
 .submit:hover {
   background-color: rgb(151, 253, 253);
+}
+
+.submit:active {
+  transform: scale(0.98);
+}
+
+/* Feedback message container for accessible live announcements */
+.feedback-message {
+  min-height: 24px;
+  font-size: 14px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  display: none;
+}
+
+.feedback-message.error {
+  display: block;
+  background-color: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #f87171;
+}
+
+.feedback-message.success {
+  display: block;
+  background-color: #dcfce7;
+  color: #166534;
+  border: 1px solid #86efac;
 }
 
 .list-container {
@@ -90,6 +146,14 @@ input:focus {
   width: 80%;
   height: 90%;
   overflow-y: auto;
+  list-style-type: none; /* Removed default bullet points semantics cleanly */
+}
+
+.empty-message {
+  font-style: italic;
+  color: #cbd5e1;
+  text-align: center;
+  margin-top: 16px;
 }
 
 .item-container {
@@ -102,4 +166,9 @@ input:focus {
   background-color: rgb(104, 108, 112);
   border-radius: 12px;
   border: 1px solid white;
+}
+
+.item-title {
+  font-size: 18px;
+  font-weight: bold;
 }
