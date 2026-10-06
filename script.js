@@ -5,6 +5,7 @@ const formSubmit = document.getElementById("submit");
 const inputName = document.getElementById("input-name");
 const inputDescription = document.getElementById("input-description");
 const inputDate = document.getElementById("input-date");
+const containerList = document.getElementById("list-task");
 
 const taskList = [];
 
@@ -14,8 +15,8 @@ let taskDescription = null;
 let taskDate = null;
 
 dropboxBtn.addEventListener("click", function (event) {
+  console.log("aqui");
   event.preventDefault();
-  event.stopPropagation();
   dropboxList.classList.toggle("show");
 });
 
@@ -47,8 +48,8 @@ formSubmit.addEventListener("click", function (event) {
     inputDescription.value = "";
     inputDate.value = "";
     dropboxBtn.innerText = "Select";
+    refreshList(taskList);
   }
-  console.log(taskList);
 });
 
 window.addEventListener("click", function (event) {
@@ -58,3 +59,32 @@ window.addEventListener("click", function (event) {
     }
   }
 });
+
+const refreshList = (list) => {
+  const htmlList = list
+    .map((item) => {
+      return `
+      <div class="item-container">
+        <div class="name-date">
+          <p>
+            Task name: <span>${item.name}</span>
+          </p>
+          <p>
+            Due date: <span>${item.date}</span>
+          </p>
+        </div>
+        <div class="name-date">
+          <p>
+            Description: <span>${item.description}</span>
+          </p>
+          <p>
+            Status: <span>${item.status}</span>
+          </p>
+        </div>
+      </div>
+    `;
+    })
+    .join("");
+
+  containerList.innerHTML = htmlList;
+};

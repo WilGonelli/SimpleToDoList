@@ -132,3 +132,28 @@ input:focus {
 .submit:hover {
   background-color: rgb(151, 253, 253);
 }
+
+.list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 80%;
+  height: 90%;
+  overflow-y: auto;
+}
+
+.item-container {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 12px;
+  gap: 4px;
+  background-color: rgb(104, 108, 112);
+  border-radius: 12px;
+}
+
+.name-date {
+  display: flex;
+  justify-content: space-between;
+}
